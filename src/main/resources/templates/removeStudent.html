@@ -1,33 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Remove Student</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Remove Student</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <nav>
-			<a href="/" th:class ="${currentPage}=='index' ? 'active':''">Home</a>
-			<a href="/registerPage" th:class="${currentPage}=='addStudent' ? 'active':''">Add Student</a>
-			<a href="/updatePage" th:class="${currrentPage}=='updateStudent' ? 'active':''">Change Data</a>
-			<a href="/deletePage" th:class="${currentPage}=='removeStudent' ? 'active':''">Delete Student</a>
-			<a href="/searchPage" th:class="${currentPage}=='searchStudent' ? 'active':''">Search Student</a>
-			<a href="/findAll" th:class="${currentPage}=='findAllStudents' ? 'active':''">View Students</a>
-		</nav>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container">
+    <a class="navbar-brand" href="/">Student Management</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/'/'}" th:classappend="${currentPage}=='index' ? 'active' : ''">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/registerPage}" th:classappend="${currentPage}=='addStudent' ? 'active' : ''">Add Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/updatePage}" th:classappend="${currentPage}=='updateStudent' ? 'active' : ''">Change Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/deletePage}" th:classappend="${currentPage}=='removeStudent' ? 'active' : ''">Delete Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/searchPage}" th:classappend="${currentPage}=='searchStudent' ? 'active' : ''">Search Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/findAll}" th:classappend="${currentPage}=='findAllStudents' ? 'active' : ''">View Students</a>
+        </li>
+      </ul>
     </div>
-    <div class="container_01">
-        <h1>Remove Student</h1>
-        <p class="warning">Warning : This action can not be undone!</p>
-        <form action="/del" method="post" class="form-container">
-            <div class="form-group">
-                <label for="univIdDelete">University Id: </label>
-                <input type="text" id="univIdDelete" name="univId" placeholder="Enter University Id" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="button">Delete Student</button>
-            </div>
-        </form>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <h2 class="text-center text-danger mb-4">Remove Student</h2>
+
+      <div class="alert alert-warning text-center" role="alert">
+        <strong>Warning!</strong> This action cannot be undone.
+      </div>
+
+      <form action="/del" method="post" class="border p-4 shadow rounded bg-light">
+        <div class="mb-3">
+          <label for="univIdDelete" class="form-label">University ID</label>
+          <input type="text" class="form-control" id="univIdDelete" name="univId" placeholder="Enter University ID" required>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-danger btn-lg">Delete Student</button>
+        </div>
+      </form>
+
     </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
